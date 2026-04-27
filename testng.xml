@@ -6,6 +6,8 @@
         <!-- Define the parameters that will be passed to the test methods -->
         <parameter name="browser" value="chrome"/>
         <parameter name="env" value="staging"/>
+        <parameter name="username" value="Abokhalifa23"/>
+        <parameter name="password" value="test123"/>
 
         <!-- Include the LoginTest and RegistrationTest classes -->
         <classes>

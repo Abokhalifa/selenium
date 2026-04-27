@@ -19,12 +19,10 @@ import java.util.concurrent.TimeUnit;
 
 public class Smoke {
 
-    @Parameters({"browser","env"})
+    @Parameters({"browser","env","username","password"})
     @Test
-    public void test1(String browser,String env) throws InterruptedException {
+    public void test1(String browser,String env,String username, String password) throws InterruptedException {
         //Test Data
-        String username = "Abokhalifa23";
-        String password = "test123";
         //Creating webdriver instance
         System.out.println("Running tests in browser: "+browser);
         System.out.println("Running tests in environment: "+env);
