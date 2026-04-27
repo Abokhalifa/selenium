@@ -10,8 +10,6 @@ import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -20,32 +18,37 @@ import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 public class Smoke {
-    private WebDriver driver;
 
-    @BeforeTest
-    @Parameters({"browser","env"})
-    public void setUp(String browser, String env){
+    @Parameters({"browser","env","username","password"})
+    @Test
+    public void test1(String browser,String env,String username, String password) throws InterruptedException {
+        //Test Data
+        //Creating webdriver instance
         System.out.println("Running tests in browser: "+browser);
         System.out.println("Running tests in environment: "+env);
-        driver = new ChromeDriver();
+        WebDriver driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().window().maximize();
         //Open web application
         driver.get("https://demoblaze.com/");
 
-    }
+        //Fluent wait
+        /*FluentWait wait = new FluentWait(driver);
+        wait.withTimeout(Duration.ofSeconds(10));
+        wait.pollingEvery(Duration.ofMillis(250));
+        wait.ignoring(ExpectedCondition.class);
+        */
 
-    @Parameters({"username","password"})
-    @Test
-    public void loginValidUser(String username, String password)  {
+
+
+        //Click the home link
         LandingPage landingPage = new LandingPage(driver);
+        //HomePage homePage = landingPage.openHomePage();
         LoginForm loginForm = landingPage.openLoginForm();
         PersonalPage personalPage = loginForm.loginValidUser(username,password);
+        //Thread.sleep(10000);
         Assert.assertEquals(personalPage.getWelcomeText(),"Welcome "+username);
-    }
 
-    @AfterTest
-    public void tearDown(){
         driver.quit();
     }
 
