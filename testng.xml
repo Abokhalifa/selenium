@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="TestNG Suite">
+    <!-- Define the parallel execution strategy -->
+    <test name="Navigation example" parallel="tests" thread-count="2">
+
+        <!-- Define the parameters that will be passed to the test methods -->
+        <parameter name="browser" value="chrome"/>
+        <parameter name="env" value="staging"/>
+
+        <!-- Include the LoginTest and RegistrationTest classes -->
+        <classes>
+            <class name="Smoke"/>
+        </classes>
+    </test>
+</suite>
