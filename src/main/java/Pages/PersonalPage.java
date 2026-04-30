@@ -9,8 +9,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public class PersonalPage {
-
     private WebElement welcomeTextArea;
+    private WebElement logoutLink;
     protected WebDriver driver;
 
 
@@ -18,13 +18,17 @@ public class PersonalPage {
         this.driver = driver;
         WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(3));
         welcomeTextArea =wait.until(ExpectedConditions.elementToBeClickable(By.id("nameofuser")));
+        logoutLink = wait.until(ExpectedConditions.elementToBeClickable(By.id("logout2")));
     }
 
     public String getWelcomeText(){
         String welcomeText =  welcomeTextArea.getText();
-        //String welcomeText =  driver.findElement(welcomeTextArea).getAttribute("innerHTML");
-        //String welcomeText =  driver.findElement(welcomeTextArea).getAttribute("textContent");
         System.out.println("The welcome text is : "+welcomeText);
         return welcomeText;
+    }
+
+    public LandingPage clickLogoutLink(){
+        logoutLink.click();
+        return new LandingPage(driver);
     }
 }
