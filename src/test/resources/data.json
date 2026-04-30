@@ -1,0 +1,12 @@
+{
+  "tests": [
+    { "testCaseName": "Login with a valid username and password.",
+      "username": "Abokhalifa23",
+      "password": "test123"
+    },
+    { "testCaseName": "Login with an invalid username and password.",
+      "username": "Abokhalifa",
+      "password": "test123"
+    }
+  ]
+}
