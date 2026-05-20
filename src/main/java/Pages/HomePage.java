@@ -2,11 +2,10 @@ package Pages;
 
 import org.openqa.selenium.WebDriver;
 
-public class HomePage {
+public class HomePage extends BasePage {
 
     public HomePage(WebDriver driver){
-        this.driver = driver;
+        super(driver);
     }
-    protected WebDriver driver;
 
 }

@@ -3,13 +3,11 @@ package Pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class LoginForm {
+public class LoginForm extends BasePage {
 
     public LoginForm(WebDriver driver){
-        this.driver = driver;
+        super(driver);
     }
-
-    protected WebDriver driver;
     private By usernameTextbox = By.id("loginusername");
     private By passwordTextbox = By.id("loginpassword");
     private By loginButton = By.xpath("//button[contains(text(),'Log in')]");
